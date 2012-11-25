@@ -3,16 +3,56 @@ package ee.itcollege.borderproject.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@NamedQueries({ 
+	@NamedQuery(name = "Incident.findAll", 
+				query = "SELECT f FROM Incident f")  })
+@Entity
 public class Incident implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+	@NotNull
+	@Size(min = 2, max = 40)
 	private String location;
+	
+	@NotNull
+	@Size(min = 2, max = 200)
 	private String description;
+	
+	@Min(value = 1)
 	private Integer involvedGuardCount;
+	
+	@NotNull
+	@Size(min = 2, max = 40)
 	private String status;
+	
+	@NotNull
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date start;
-	private Date end;
+	
+	@NotNull
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private Date ending;
+	
+	public int getId() {
+		return id;
+	}
 
 	public String getLocation() {
 		return location;
@@ -54,12 +94,12 @@ public class Incident implements Serializable {
 		this.start = start;
 	}
 
-	public Date getEnd() {
-		return end;
+	public Date getEnding() {
+		return ending;
 	}
 
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setEnding(Date ending) {
+		this.ending = ending;
 	}
 
 }

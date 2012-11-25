@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @NamedQueries({ 
 	@NamedQuery(name = "Guard.findAll", 
@@ -20,13 +24,20 @@ import javax.persistence.NamedQuery;
 				query = "SELECT g FROM Guard g WHERE g.name = :name AND g.age = :age") })
 @Entity
 public class Guard implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@NotNull
+	@Size(min = 2, max = 20)
 	private String name;
+	
+	@Min(value = 18)
+	@Max(value = 99)
 	private int age;
-	private static final long serialVersionUID = 1L;
 
 	public int getId() {
 		return this.id;
