@@ -1,0 +1,17 @@
+CRUD options for Incident
+../incident/add - roles: ROLE_USER, ROLE_ADMIN
+../incident/view - roles: ROLE_USER, ROLE_ADMIN
+../incident/update?id=(int) - roles: ROLE_ADMIN
+../incident/delete?id=(int) - roles: ROLE_ADMIN
+
+CRUD options for BorderStation
+../borderStation/add - roles: ROLE_USER, ROLE_ADMIN
+../borderStation/view - roles: ROLE_USER, ROLE_ADMIN
+../borderStation/update?id=(int) - roles: ROLE_ADMIN
+../borderStation/delete?id=(int) - roles: ROLE_ADMIN
+
+CRUD options for Guard
+../guard/add - roles: ROLE_USER, ROLE_ADMIN
+../guard/view - roles: ROLE_USER, ROLE_ADMIN
+../guard/update?id=(int) - roles: ROLE_ADMIN
+../guard/delete?id=(int) - roles: ROLE_ADMIN
