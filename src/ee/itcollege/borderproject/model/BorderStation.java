@@ -6,9 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+@NamedQueries({ 
+	@NamedQuery(name = "BorderStation.findAll", 
+				query = "SELECT f FROM BorderStation f")  })
 
 @Entity
 public class BorderStation implements Serializable {
@@ -30,6 +36,10 @@ public class BorderStation implements Serializable {
 	@Min(value = 1)
 	private int guardCount;
 	
+	public int getId() {
+		return id;
+	}
+
 	public String getName() {
 		return name;
 	}

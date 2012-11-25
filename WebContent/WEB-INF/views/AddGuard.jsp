@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Add Incident"
+					<td><input type="submit" value="Add Guard"
 						class="btn btn-primary btn-larg" /></td>
 				</tr>
 			</table>
