@@ -1,10 +1,28 @@
 package ee.itcollege.borderproject.model;
 
 import java.io.Serializable;
-import java.lang.String;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@NamedQueries({ 
+	@NamedQuery(name = "Guard.findAll", 
+				query = "SELECT g FROM Guard g"), 
+	@NamedQuery(name = "Guard.findByName", 
+				query = "SELECT g FROM Guard g WHERE g.name = :name"), 
+	@NamedQuery(name = "Guard.findByAge", 
+				query = "SELECT g FROM Guard g WHERE g.age = :age"), 
+	@NamedQuery(name = "Guard.findByNameAndAge", 
+				query = "SELECT g FROM Guard g WHERE g.name = :name AND g.age = :age") })
+@Entity
 public class Guard implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private int age;
