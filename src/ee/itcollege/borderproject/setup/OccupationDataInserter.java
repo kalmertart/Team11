@@ -1,6 +1,5 @@
 package ee.itcollege.borderproject.setup;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -17,7 +16,6 @@ public class OccupationDataInserter {
 	OccupationDao occupationDao;
 	
 	public void insertOccupations(){
-		System.out.println(hasTestDataBeenInserted());
 		if (!hasTestDataBeenInserted()) {
 			occupationDao.save(testOccupation1());
 			occupationDao.save(testOccupation2());

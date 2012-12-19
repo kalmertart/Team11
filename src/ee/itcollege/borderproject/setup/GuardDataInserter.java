@@ -1,6 +1,5 @@
 package ee.itcollege.borderproject.setup;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -17,7 +16,6 @@ public class GuardDataInserter {
 	GuardDao guardDao;
 	
 	public void insertGuards(){
-		System.out.println(hasTestDataBeenInserted());
 		if (!hasTestDataBeenInserted()) {
 			guardDao.save(testGuard1());
 			guardDao.save(testGuard2());
