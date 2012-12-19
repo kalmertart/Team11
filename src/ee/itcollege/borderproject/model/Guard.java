@@ -1,66 +1,141 @@
 package ee.itcollege.borderproject.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@NamedQueries({ 
-	@NamedQuery(name = "Guard.findAll", 
-				query = "SELECT g FROM Guard g"), 
-	@NamedQuery(name = "Guard.findByName", 
-				query = "SELECT g FROM Guard g WHERE g.name = :name"), 
-	@NamedQuery(name = "Guard.findByAge", 
-				query = "SELECT g FROM Guard g WHERE g.age = :age"), 
-	@NamedQuery(name = "Guard.findByNameAndAge", 
-				query = "SELECT g FROM Guard g WHERE g.name = :name AND g.age = :age") })
-@Entity
-public class Guard implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+import org.hibernate.validator.constraints.Range;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+import ee.itcollege.borderproject.common.BaseEntity;
+
+@Entity
+@Table(name = ("Piirivalvur"))
+@NamedQueries({ 
+	 @NamedQuery(name = "Guard.findAll", 
+	    query = "SELECT g FROM Guard g WHERE g.removed IS null")})
+public class Guard extends BaseEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name = "aadress")
+	@NotNull
+	@Size(min = 4, max = 255)
+	private String address;
+	
+	@Column(name = "eesnimi")
+	@NotNull
+	@Size(min = 2, max = 255)
+	private String firstName;
+	
+	@Column(name = "perekonnanimi")
+	@NotNull
+	@Size(min = 2, max = 255)
+	private String lastName;
 	
 	@NotNull
-	@Size(min = 2, max = 20)
-	private String name;
+	@Size(min = 4, max = 255)
+	private String email;
 	
-	@Min(value = 18)
-	@Max(value = 99)
-	private int age;
+	@Column(name = "isikukood")
+	@NotNull
+	@Size(min = 6, max = 20)
+	private String socialSecurityNumber;
+	
+	@Column(name = "sodurikood")
+	@NotNull
+	@Size(min = 4, max = 50)
+	private String soldiersCode;
+	
+	@Column(name = "sugu")
+	@Range(min = 0, max = 1)
+	private int gender;
+	
+	@Column(name = "telefon")
+	@NotNull
+	@Size(min = 2, max = 255)
+	private String phoneNumber;
+	
+	@OneToMany(mappedBy = "guard")
+	private List<GuardInBorderStation> guardInBorderStation;
 
-	public int getId() {
-		return this.id;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getEmail() {
+		return email;
 	}
 
-	public int getAge() {
-		return this.age;
+	public String getSocialSecurityNumber() {
+		return socialSecurityNumber;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public String getSoldiersCode() {
+		return soldiersCode;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 	
+	public List<GuardInBorderStation> getGuardInBorderStation() {
+		return guardInBorderStation;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setSocialSecurityNumber(String socialSecurityNumber) {
+		this.socialSecurityNumber = socialSecurityNumber;
+	}
+
+	public void setSoldiersCode(String soldiersCode) {
+		this.soldiersCode = soldiersCode;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	public void setGuardInBorderStation(
+			List<GuardInBorderStation> guardInBorderStation) {
+		this.guardInBorderStation = guardInBorderStation;
+	}
 }
