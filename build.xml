@@ -60,7 +60,6 @@
 		</delete>
 	</target>
 
-
 	<target name="war" description="Builds everything and constructs a .war archive" depends="compile">
 		<mkdir dir="${dist.dir}" />
 		<war basedir="${web.dir}" destfile="${dist.dir}/${project.name}-${team.name}.war" webxml="${web-inf.dir}/web.xml" />
