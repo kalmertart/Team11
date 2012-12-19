@@ -8,20 +8,20 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import ee.itcollege.borderproject.common.CrudDaoJpa;
-import ee.itcollege.borderproject.dao.BorderStationDao;
-import ee.itcollege.borderproject.model.BorderStation;
+import ee.itcollege.borderproject.dao.OccupationDao;
+import ee.itcollege.borderproject.model.Occupation;
 
 @Repository
-public class BorderStationDaoJpa extends CrudDaoJpa<BorderStation> implements BorderStationDao {
+public class OccuaptionDaoJpa extends CrudDaoJpa<Occupation> implements OccupationDao {
 
 	@Override
-	public List<BorderStation> getAll() {
+	public List<Occupation> getAll() {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		
 		try {
-			TypedQuery<BorderStation> query = entityManager.createNamedQuery("BorderStation.findAll", BorderStation.class);
+			TypedQuery<Occupation> query = entityManager.createNamedQuery("Occupation.findAll", Occupation.class);
 			return query.getResultList();
-		} 
+		}
 		finally {
 			entityManager.close();
 		}
