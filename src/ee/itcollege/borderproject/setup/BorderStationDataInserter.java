@@ -75,7 +75,7 @@ public class BorderStationDataInserter {
 	}
 	
 	private boolean hasTestDataBeenInserted() {
-		for (BorderStation bs : bsDao.getAll()) {
+		for (BorderStation bs : bsDao.getWithDeleted()) {
 			if (SYSTEM_USER.equals(bs.getCreator()))
 				return true;
 		}

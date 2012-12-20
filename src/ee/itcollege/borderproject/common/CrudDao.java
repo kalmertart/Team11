@@ -5,6 +5,8 @@ import java.util.List;
 public interface CrudDao<T> {
 
 	List<T> getAll();
+	
+	List<T> getWithDeleted();
 
 	void save(T entity) ;
 	

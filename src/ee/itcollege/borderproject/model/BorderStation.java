@@ -19,7 +19,8 @@ import ee.itcollege.borderproject.common.BaseEntity;
 @Entity
 @Table(name = "Piiripunkt")
 @NamedQueries({
-	@NamedQuery(name = "BorderStation.findAll", query = "SELECT b FROM BorderStation b WHERE b.removed IS null")
+	@NamedQuery(name = "BorderStation.findAll", query = "SELECT b FROM BorderStation b WHERE b.removed IS null"),
+	@NamedQuery(name = "BorderStation.findWithDeleted", query = "Select b FROM BorderStation b")
 })
 public class BorderStation extends BaseEntity implements Serializable{
 	

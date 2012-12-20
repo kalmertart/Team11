@@ -27,4 +27,17 @@ public class BorderStationDaoJpa extends CrudDaoJpa<BorderStation> implements Bo
 		}
 	}
 
+	@Override
+	public List<BorderStation> getWithDeleted() {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		try {
+			TypedQuery<BorderStation> query = entityManager.createNamedQuery("BorderStation.findWithDeleted", BorderStation.class);
+			return query.getResultList();
+		} 
+		finally {
+			entityManager.close();
+		}
+	}
+
 }

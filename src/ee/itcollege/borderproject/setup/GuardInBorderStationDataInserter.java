@@ -55,7 +55,7 @@ public class GuardInBorderStationDataInserter {
 	}
 	
 	private boolean hasTestDataBeenInserted() {
-		for (GuardInBorderStation guardInBorderStation : guardInBorderStationDao.getAll()) {
+		for (GuardInBorderStation guardInBorderStation : guardInBorderStationDao.getWithDeleted()) {
 			if (SYSTEM_USER.equals(guardInBorderStation.getCreator()))
 				return true;
 		}

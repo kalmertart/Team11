@@ -51,7 +51,7 @@ public class OccupationDataInserter {
 	}
 	
 	private boolean hasTestDataBeenInserted() {
-		for (Occupation occupation : occupationDao.getAll()) {
+		for (Occupation occupation : occupationDao.getWithDeleted()) {
 			if (SYSTEM_USER.equals(occupation.getCreator()))
 				return true;
 		}

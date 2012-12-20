@@ -29,4 +29,18 @@ public class OccupationInBorderStationDaoJpa extends CrudDaoJpa<OccupationInBord
 		}
 	}
 
+	@Override
+	public List<OccupationInBorderStation> getWithDeleted() {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		try {
+			TypedQuery<OccupationInBorderStation> query = 
+					entityManager.createNamedQuery("OccupationInBorderStation.findWithDeleted",OccupationInBorderStation.class);
+			
+			return query.getResultList();
+		} finally {
+			entityManager.close();
+		}
+	}
+
 }

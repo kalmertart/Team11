@@ -27,4 +27,17 @@ public class GuardInBorderStationDaoJpa extends CrudDaoJpa<GuardInBorderStation>
 		}
 	}
 
+	@Override
+	public List<GuardInBorderStation> getWithDeleted() {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		try {
+			TypedQuery<GuardInBorderStation> query = entityManager.createNamedQuery("GuardInBorderStation.findWithDeleted", GuardInBorderStation.class);
+			return query.getResultList();
+		}
+		finally {
+			entityManager.close();
+		}
+	}
+
 }

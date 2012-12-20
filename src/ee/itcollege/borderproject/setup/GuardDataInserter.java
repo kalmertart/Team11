@@ -115,7 +115,7 @@ public class GuardDataInserter {
 	}
 	
 	private boolean hasTestDataBeenInserted() {
-		for (Guard guard : guardDao.getAll()) {
+		for (Guard guard : guardDao.getWithDeleted()) {
 			if (SYSTEM_USER.equals(guard.getCreator()))
 				return true;
 		}

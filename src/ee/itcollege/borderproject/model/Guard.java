@@ -19,8 +19,9 @@ import ee.itcollege.borderproject.common.BaseEntity;
 @Entity
 @Table(name = ("Piirivalvur"))
 @NamedQueries({ 
-	 @NamedQuery(name = "Guard.findAll", 
-	    query = "SELECT g FROM Guard g WHERE g.removed IS null")})
+	 @NamedQuery(name = "Guard.findAll", query = "SELECT g FROM Guard g WHERE g.removed IS null"),
+	 @NamedQuery(name = "Guard.findWithDeleted", query = "SELECT g FROM Guard g")
+})
 public class Guard extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

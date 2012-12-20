@@ -58,7 +58,6 @@ public abstract class CrudController<T extends BaseEntity> {
 	@RequestMapping(value = VIEW, method = RequestMethod.GET)
 	public String view(Model model) {
 		model.addAttribute(listingAttribute, getAll());
-		System.out.println(getAll().size());
 		return listingView;
 	}
 

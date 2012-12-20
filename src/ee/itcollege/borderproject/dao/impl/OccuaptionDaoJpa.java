@@ -27,4 +27,17 @@ public class OccuaptionDaoJpa extends CrudDaoJpa<Occupation> implements Occupati
 		}
 	}
 
+	@Override
+	public List<Occupation> getWithDeleted() {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		try {
+			TypedQuery<Occupation> query = entityManager.createNamedQuery("Occupation.findWithDeleted", Occupation.class);
+			return query.getResultList();
+		}
+		finally {
+			entityManager.close();
+		}
+	}
+
 }
