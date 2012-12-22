@@ -12,7 +12,7 @@
 		
 		<properties>
 			<!-- JPA configuration -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:${user.home}/i377/Team11/db;shutdown=true" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:${user.home}/i377/piirivalve-Team11/db;shutdown=true" />
 <!-- 		<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:Team11BorderDb" /> -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
